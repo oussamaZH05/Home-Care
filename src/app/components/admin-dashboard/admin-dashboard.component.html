@@ -1,0 +1,102 @@
+<app-titles title="DashBoard Admin"></app-titles>
+
+<!-- Start Counter 
+		============================================= -->
+<div class="counter-area bg de-padding">
+  <div class="container">
+    <div class="counter-wrapper grid-2">
+      <div class="fun-fact">
+        <span class="fun-icon"
+          ><i><img src="assets/img/icons/patient.png" alt="thumb" /></i
+        ></span>
+        <div class="fun-desc">
+          <p class="users">Total Users</p>
+          <span class="medium">Total Users</span>
+        </div>
+      </div>
+      <div class="fun-fact fun-active">
+        <span class="fun-icon"
+          ><i><img src="assets/img/icons/appointment.png" alt="thumb" /></i
+        ></span>
+        <div class="fun-desc">
+          <p class="users">307</p>
+          <span class="medium">Total Job Offers</span>
+        </div>
+      </div>
+      <!-- <div class="fun-fact">
+        <span class="fun-icon"
+          ><i><img src="assets/img/icons/patient.png" alt="thumb" /></i
+        ></span>
+        <div class="fun-desc">
+          <p class="timer">80</p>
+          <span class="medium">Total Requests</span>
+        </div>
+      </div> -->
+    </div>
+    <div class="counter-wrapper grid-2">
+      <div class="fun-fact">
+        <app-chart chartType="Pie"></app-chart>
+      </div>
+      <div class="fun-fact">
+        <app-chart chartType="BarForPost"></app-chart>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Counter -->
+<!-- Start Process
+		============================================= -->
+<div class="prs-area de-padding" data-background="assets/img/process/bg_ir.png">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="site-title text-center">
+          <h5>_Why Choose us_</h5>
+          <h2>Medihouse working process</h2>
+          <p class="mb-0 mt-20">
+            We have been providing Medi House professional services since 1987.
+            With success we care for the patients with utmost care. This is very
+            important to us.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="prs-wrapper grid-3">
+      <div class="prs-box">
+        <a routerLink="/usersTable">
+          <div class="prs-icon">
+            <i><img src="assets/img/icons/life.png" alt="thumb" /></i>
+          </div>
+          <div class="prs-info">
+            <h6>Users Table</h6>
+
+            <p class="mb-0">See All Users</p>
+          </div>
+        </a>
+      </div>
+      <div class="prs-box">
+        <a routerLink="/postsTable">
+          <div class="prs-icon">
+            <i><img src="assets/img/icons/appointment.png" alt="thumb" /></i>
+          </div>
+          <div class="prs-info">
+            <h6>Clients Posts Table</h6>
+            <p class="mb-0">See All Job Offers</p>
+          </div>
+        </a>
+      </div>
+      <div class="prs-box">
+        <a routerLink="/requestsTable">
+          <div class="prs-icon">
+            <i><img src="assets/img/icons/treatment.png" alt="thumb" /></i>
+          </div>
+          <div class="prs-info">
+            <h6>Requests Table</h6>
+            <p class="mb-0">see Job applications and client requests</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Process -->

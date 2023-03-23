@@ -1,0 +1,67 @@
+<app-titles title="Post Info"></app-titles>
+
+<!-- Start Testimonial
+		============================================= -->
+<div class="ts-area de-padding">
+  <div class="container">
+    <div class="ts-title mb-60 text-center">
+      <h2 class="mb-0">Job Details</h2>
+    </div>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-7">
+        <div class="ts-wrapper justify-content-center">
+          <div class="ts-box">
+            <div class="ts-btm">
+              <div
+                class="ts-rating d-flex align-items-center justify-content-center"
+              >
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+
+                <span>
+                  <h4>{{ post.title }}</h4>
+                </span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p style="font-size: large">
+                {{ post.description }}
+              </p>
+            </div>
+            <h5>Author:</h5>
+            <div class="ts-up">
+              <div class="ts-up-left">
+                <img [src]="author.avatar" alt="thumb" width="100px" />
+              </div>
+              <div class="ts-up-right">
+                <h5>{{ author.lastName }} {{ author.firstName }}</h5>
+                <h6 class="mb-0">Address: {{ author.address }}</h6>
+                <h6 class="mb-0">Phone: {{ author.phone }}</h6>
+                <h6 class="mb-0">Email: {{ author.email }}</h6>
+              </div>
+            </div>
+            <div
+              class="but1 mt-3"
+              (click)="jobValidation()"
+              *ngIf="post.status != 'reserved' && show == true"
+            >
+              Take The Job
+            </div>
+            <div
+              class="text-center"
+              *ngIf="post.status == 'reserved' && show == true"
+            >
+              <p style="color: crimson; font-weight: 700">
+                This Job is no more available
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Testimonial -->

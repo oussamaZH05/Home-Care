@@ -1,0 +1,146 @@
+<app-titles title="Dashboard"></app-titles>
+<div class="container">
+  <div class="d-profile-inf-box mt-5" *ngIf="show == 'posts'">
+    <h4 class="d-pf">My Posts:</h4>
+    <table class="table" *ngIf="myPosts?.length > 0">
+      <thead class="thead-light">
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of myPosts">
+          <td>{{ post.date | date : "dd/MM/yyyy" }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.description }}</td>
+          <td>
+            {{ post.status }}
+          </td>
+
+          <td>
+            <ul class="wrapper">
+              <li class="icon facebook" *ngIf="post.status == 'reserved'">
+                <span class="tooltip"> View Reservation Details</span>
+                <span>
+                  <i
+                    class="far fa-eye fa"
+                    (click)="viewReservation(post.nurseId)"
+                  ></i
+                ></span>
+              </li>
+              <li class="icon editOuss" *ngIf="post.status != 'reserved'">
+                <span class="tooltip">Edit</span>
+                <span
+                  ><i class="fas fa-edit fa" (click)="editPost(post._id)"></i
+                ></span>
+              </li>
+              <li class="icon DeleteOuss" *ngIf="post.status != 'reserved'">
+                <span class="tooltip">Delete</span>
+                <span
+                  ><i
+                    class="far fa-trash-alt fa"
+                    (click)="deletePost(post._id)"
+                  ></i
+                ></span>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="myPosts?.length == 0" class="text-center">
+      <h3>No Data Found</h3>
+    </div>
+  </div>
+  <div class="d-profile-inf-box mt-5" *ngIf="show == 'requests'">
+    <h4 class="d-pf">My Sent Requests:</h4>
+    <table class="table text-center" *ngIf="myRequests?.length > 0">
+      <thead class="thead-light">
+        <tr>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of myRequests">
+          <td>{{ request.date | date : "dd/MM/yyyy" }}</td>
+          <td
+            [ngClass]="{
+              confirmed:
+                statusStyle(request.status) == 'fa fa-check-circle fa-1x',
+              notConfirmed: statusStyle(request.status) == 'fa fa-times-circle'
+            }"
+          >
+            {{ request.status }}
+            <i class="{{ result }}"></i>
+          </td>
+          <td>
+            <ul class="wrapper">
+              <li class="icon facebook">
+                <span class="tooltip">View Nurse Profile</span>
+                <span>
+                  <i
+                    class="far fa-eye fa"
+                    (click)="viewReservation(request.nurse[0]?._id)"
+                  ></i
+                ></span>
+              </li>
+              <li class="icon editOuss">
+                <span class="tooltip">Edit</span>
+                <span><i class="fas fa-edit fa"></i></span>
+              </li>
+              <li class="icon DeleteOuss">
+                <span class="tooltip">Delete</span>
+                <span><i class="far fa-trash-alt fa"></i></span>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="myPosts?.length == 0" class="text-center">
+      <h3>No Data Found</h3>
+    </div>
+  </div>
+</div>
+
+<!-- /* tooltips choices */
+<td>
+<ul class="wrapper">
+  <li class="icon facebook">
+    <span class="tooltip">View Nurse Profile</span>
+    <span><i class="far fa-eye fa"></i></span>
+  </li>
+  <li class="icon twitter">
+    <span class="tooltip">Twitter</span>
+    <span><i class="fab fa-twitter"></i></span>
+  </li>
+  <li class="icon instagram">
+    <span class="tooltip">Instagram</span>
+    <span><i class="fab fa-instagram"></i></span>
+  </li>
+  <li class="icon editOuss">
+    <span class="tooltip">editOuss</span>
+    <span><i class="fab fa-editOuss"></i></span>
+  </li>
+  <li class="icon DeleteOuss">
+    <span class="tooltip">DeleteOuss</span>
+    <span><i class="fab fa-DeleteOuss"></i></span>
+  </li>
+</ul>
+<i
+  data-toggle="tooltip"
+  data-placement="bottom"
+  title="This answer is useful."
+  class="far fa-eye fa-2x"
+  style="color: blue; cursor: pointer"
+  (click)="viewReservation(request.nurse[0]?._id)"
+></i>
+
+
+</td> -->

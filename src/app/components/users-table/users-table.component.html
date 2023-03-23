@@ -1,0 +1,553 @@
+<app-titles title="Users Table"></app-titles>
+<!-- Start work
+		============================================= -->
+<!-- <div id="portfolio" class="portfolio-area de-padding ptt-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="site-title text-center">
+          <h5>_Users Table_</h5>
+          <h2 class="mb-0">Check All Users</h2>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-items-area">
+      <div class="row">
+        <div class="col-xl-12 portfolio-content ptt-1">
+          <div class="mix-item-menu active-theme text-center">
+            <button class="active" data-filter="*">All</button>
+            <button data-filter=".nurses" class="">Nurses</button>
+            <button data-filter=".clients" class="">Clients</button>
+            <button data-filter=".admins" class="">Admins</button>
+          </div>
+          <-- End Mixitup Nav-->
+<!-- <div class="magnific-mix-gallery masonary">
+            <div id="portfolio-grid" class="portfolio-items">
+              <div class="pf-item justify-content-center admins">
+                <div class="d-profile-inf-box mt-5">
+                  <h4 class="d-pf">Admins Table:</h4>
+
+                  <table class="table text-center" *ngIf="adminsTab">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>N°</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let admin of adminsTab; let i = index">
+                        <td>{{ i }}</td>
+                        <td>{{ admin.firstName }}</td>
+                        <td>{{ admin.lastName }}</td>
+                        <td>{{ admin.email }}</td>
+                        <td>{{ admin.phone }}</td>
+                        <td>{{ admin.address }}</td>
+                        <td>Actions</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="text-center" *ngIf="!adminsTab">
+                    <h3>No Data Found</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pf-item justify-content-center clients">
+                <div class="d-profile-inf-box mt-5">
+                  <h4 class="d-pf">Clients Table:</h4>
+                  <table class="table text-center" *ngIf="clientsTab">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>N°</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        *ngFor="let client of clientsTab; let i = index"
+                        [ngStyle]="{
+                          background: genderColor(client.gender)
+                        }"
+                      >
+                        <td>{{ i }}</td>
+                        <td>{{ client.firstName }}</td>
+                        <td>{{ client.lastName }}</td>
+                        <td>{{ client.email }}</td>
+                        <td>{{ client.phone }}</td>
+                        <td>{{ client.address }}</td>
+                        <td>
+                          {{ client.status }}
+                        </td>
+                        <td>
+                          <button
+                            *ngIf="client.status == 'Not Confirmed'"
+                            type="button"
+                            class="btn btn-primary mr-2"
+                            (click)="confirmUser(client._id)"
+                          >
+                            <i class="far fa-eye fa-2x"></i> Confirm
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-success mr-2"
+                            (click)="goToProfileEdit(client._id)"
+                          >
+                            <i class="fas fa-edit fa-2x"></i>Edit
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            (click)="deleteUser(client._id)"
+                          >
+                            <i class="far fa-trash-alt fa-2x"></i> Delete
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="text-center" *ngIf="!clientsTab">
+                    <h3>No Data Found</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="pf-item justify-content-center nurses">
+                <div class="d-profile-inf-box mt-5">
+                  <h4 class="d-pf">Nurses Table:</h4>
+                  <table class="table text-center" *ngIf="nursesTab">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>N°</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Experience</th>
+                        <th>status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let nurse of nursesTab; let i = index">
+                        <td>{{ i }}</td>
+                        <td>{{ nurse.firstName }}</td>
+                        <td>{{ nurse.lastName }}</td>
+                        <td>{{ nurse.email }}</td>
+                        <td>{{ nurse.phone }}</td>
+                        <td>{{ nurse.address }}</td>
+                        <td>{{ nurse.experience }}</td>
+                        <td>{{ nurse.status }}</td>
+                        <td>
+                          <button
+                            *ngIf="nurse.status == 'Not Confirmed'"
+                            type="button"
+                            class="btn btn-primary mr-2"
+                            (click)="confirmUser(nurse._id)"
+                          >
+                            <i class="far fa-eye fa-2x"></i> Confirm
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-success mr-2"
+                            (click)="goToProfileEdit(nurse._id)"
+                          >
+                            <i class="fas fa-edit fa-2x"></i>Edit
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            (click)="deleteUser(nurse._id)"
+                          >
+                            <i class="far fa-trash-alt fa-2x"></i> Delete
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="text-center" *ngIf="!nursesTab">
+                    <h3>No Data Found</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- End Work -->
+<div id="portfolio" class="portfolio-area de-padding ptt-2">
+  <div class="container">
+    <div class="row">
+      <!-- nav tabs start -->
+      <div class="ch-wpr">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a
+              class="nav-item nav-link active"
+              id="nav-home-tab"
+              data-toggle="tab"
+              href="#nav-home"
+              role="tab"
+              aria-controls="nav-home"
+              aria-selected="true"
+            >
+              <div class="ch-nv-txt">
+                <i class="fas fa-user"></i>
+                <span>Clients</span>
+              </div>
+            </a>
+            <a
+              class="nav-item nav-link"
+              id="nav-profile-tab"
+              data-toggle="tab"
+              href="#nav-profile"
+              role="tab"
+              aria-controls="nav-profile"
+              aria-selected="false"
+            >
+              <div class="ch-nv-txt">
+                <i class="fa fa-power-off"></i>
+                <span>Admins</span>
+              </div>
+            </a>
+            <a
+              class="nav-item nav-link"
+              id="nav-contact-tab"
+              data-toggle="tab"
+              href="#nav-contact"
+              role="tab"
+              aria-controls="nav-contact"
+              aria-selected="false"
+            >
+              <div class="ch-nv-txt">
+                <i class="fas fa-user-md"></i>
+                <span>Nurses</span>
+              </div>
+            </a>
+          </div>
+        </nav>
+        <div class="tab-content justify-content-center" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="nav-home"
+            role="tabpanel"
+            aria-labelledby="nav-home-tab"
+          >
+            <div class="pf-item justify-content-center clients">
+              <div class="d-profile-inf-box mt-5">
+                <h4 class="d-pf">Clients Table:</h4>
+                <div style="margin-left: auto">
+                  <form class="contact-form">
+                    <div class="form-group mb-3">
+                      <div style="margin-left: auto">
+                        <label
+                          for="filtre"
+                          style="color: #8b8b8b; font-weight: 700"
+                          >Filter By Name</label
+                        >
+                      </div>
+
+                      <input
+                        id="filtre"
+                        style="
+                          width: 200px;
+                          color: black;
+                          font-size: larger;
+                          background-color: #d8d8d8;
+                        "
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="name"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </div>
+                  </form>
+                </div>
+
+                <table class="table text-center" *ngIf="clientsTab">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>N°</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Address</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let client of pageOfItems | myFilter : name;
+                        let i = index
+                      "
+                      [ngStyle]="{
+                        background: genderColor(client.gender)
+                      }"
+                    >
+                      <td>{{ i }}</td>
+                      <td>{{ client.firstName }}</td>
+                      <td>{{ client.lastName }}</td>
+                      <td>{{ client.email }}</td>
+                      <td>{{ client.phone }}</td>
+                      <td>{{ client.address }}</td>
+                      <td>
+                        {{ client.status }}
+                      </td>
+                      <td>
+                        <ul class="wrapper">
+                          <li
+                            class="icon facebook"
+                            *ngIf="client.status == 'Not Confirmed'"
+                          >
+                            <span class="tooltip">Confirm</span>
+                            <span>
+                              <i
+                                class="far fa-eye fa"
+                                (click)="confirmUser(client._id)"
+                              ></i
+                            ></span>
+                          </li>
+                          <li class="icon editOuss">
+                            <span class="tooltip">Edit</span>
+                            <span
+                              ><i
+                                class="fas fa-edit fa"
+                                (click)="goToProfileEdit(client._id)"
+                              ></i
+                            ></span>
+                          </li>
+                          <li class="icon DeleteOuss">
+                            <span class="tooltip">Delete</span>
+                            <span
+                              ><i
+                                class="far fa-trash-alt fa"
+                                (click)="deleteUser(client._id)"
+                              ></i
+                            ></span>
+                          </li>
+                        </ul>
+                      </td>
+                      <!-- <td>
+                        <button
+                          *ngIf="client.status == 'Not Confirmed'"
+                          type="button"
+                          class="btn btn-primary mr-2"
+                          (click)="confirmUser(client._id)"
+                        >
+                          <i class="far fa-eye fa-2x"></i> Confirm
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-success mr-2"
+                          (click)="goToProfileEdit(client._id)"
+                        >
+                          <i class="fas fa-edit fa-2x"></i>Edit
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          (click)="deleteUser(client._id)"
+                        >
+                          <i class="far fa-trash-alt fa-2x"></i> Delete
+                        </button>
+                      </td> -->
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="text-center" *ngIf="!clientsTab">
+                  <h3>No Data Found</h3>
+                </div>
+              </div>
+              <span class="card-footer pb-0 pt-3">
+                <jw-pagination
+                  [items]="clientsTab"
+                  [pageSize]="3"
+                  (changePage)="onChangePage($event)"
+                ></jw-pagination>
+              </span>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="nav-profile"
+            role="tabpanel"
+            aria-labelledby="nav-profile-tab"
+          >
+            <div class="pf-item justify-content-center admins">
+              <div class="d-profile-inf-box mt-5">
+                <h4 class="d-pf">Admins Table:</h4>
+
+                <table class="table text-center" *ngIf="adminsTab">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>N°</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Address</th>
+
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let admin of pageOfItemsAdmins; let i = index">
+                      <td>{{ i }}</td>
+                      <td>{{ admin.firstName }}</td>
+                      <td>{{ admin.lastName }}</td>
+                      <td>{{ admin.email }}</td>
+                      <td>{{ admin.phone }}</td>
+                      <td>{{ admin.address }}</td>
+                      <td>Actions</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="text-center" *ngIf="!adminsTab">
+                  <h3>No Data Found</h3>
+                </div>
+                <span class="card-footer pb-0 pt-3">
+                  <jw-pagination
+                    [items]="adminsTab"
+                    [pageSize]="3"
+                    (changePage)="onChangePageAdmins($event)"
+                  ></jw-pagination>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="nav-contact"
+            role="tabpanel"
+            aria-labelledby="nav-contact-tab"
+          >
+            <div class="pf-item justify-content-center nurses">
+              <div class="d-profile-inf-box mt-5">
+                <h4 class="d-pf">Nurses Table:</h4>
+                <form class="contact-form">
+                  <div class="form-group mb-3">
+                    <div style="margin-left: auto">
+                      <label
+                        for="filtre"
+                        style="color: #8b8b8b; font-weight: 700"
+                        >Filter By Name</label
+                      >
+                    </div>
+
+                    <input
+                      id="filtre"
+                      style="
+                        width: 200px;
+                        color: black;
+                        font-size: larger;
+                        background-color: #d8d8d8;
+                      "
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="name"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                </form>
+                <table class="table text-center" *ngIf="nursesTab">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>N°</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Address</th>
+                      <th>Experience</th>
+                      <th>status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let nurse of pageOfItemsNurse | myFilter : name;
+                        let i = index
+                      "
+                    >
+                      <td>{{ i }}</td>
+                      <td>{{ nurse.firstName }}</td>
+                      <td>{{ nurse.lastName }}</td>
+                      <td>{{ nurse.email }}</td>
+                      <td>{{ nurse.phone }}</td>
+                      <td>{{ nurse.address }}</td>
+                      <td>{{ nurse.experience }}</td>
+                      <td>{{ nurse.status }}</td>
+
+                      <td>
+                        <ul class="wrapper">
+                          <li
+                            class="icon facebook"
+                            *ngIf="nurse.status == 'Not Confirmed'"
+                          >
+                            <span class="tooltip">Confirm</span>
+                            <span>
+                              <i
+                                class="far fa-eye fa"
+                                (click)="confirmUser(nurse._id)"
+                              ></i
+                            ></span>
+                          </li>
+                          <li class="icon editOuss">
+                            <span class="tooltip">Edit</span>
+                            <span
+                              ><i
+                                class="fas fa-edit fa"
+                                (click)="goToProfileEdit(nurse._id)"
+                              ></i
+                            ></span>
+                          </li>
+                          <li class="icon DeleteOuss">
+                            <span class="tooltip">Delete</span>
+                            <span
+                              ><i
+                                class="far fa-trash-alt fa"
+                                (click)="deleteUser(nurse._id)"
+                              ></i
+                            ></span>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="text-center" *ngIf="!nursesTab">
+                  <h3>No Data Found</h3>
+                </div>
+              </div>
+              <span class="card-footer pb-0 pt-3">
+                <jw-pagination
+                  [items]="nursesTab"
+                  [pageSize]="3"
+                  (changePage)="onChangePageNurses($event)"
+                ></jw-pagination>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- nav tabs end -->
+    </div>
+  </div>
+</div>

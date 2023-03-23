@@ -1,0 +1,81 @@
+<app-titles title="Login"></app-titles>
+
+<!-- Start Contact 
+		============================================= -->
+<div class="c-us-area de-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="site-title text-center">
+          <h2>Login</h2>
+          <p class="mt-10">Welcome Among Us.</p>
+        </div>
+      </div>
+    </div>
+    <div class="c-us-wpr">
+      <div class="row">
+        <div class="col-3"></div>
+
+        <form [formGroup]="loginForm" class="col-6">
+          <div class="form-group">
+            <label for="inputAddress">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="email"
+              placeholder="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="inputAddress">Phone</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="phone"
+              placeholder="phone"
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Password</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="password"
+              placeholder="password"
+            />
+            <div
+              class="red"
+              *ngIf="
+                loginForm.controls['password'].invalid &&
+                (loginForm.controls['password'].touched ||
+                  loginForm.controls['password'].dirty)
+              "
+            >
+              <div
+                style="color: red"
+                *ngIf="loginForm.controls['password'].errors.required"
+              >
+                password is required
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              class="bt rounded-pill"
+              value="Login"
+              (click)="login()"
+              [disabled]="loginForm.invalid"
+            >
+              Login
+            </button>
+            <span style="padding-left: 20px; color: red">{{ errorMsg }}</span>
+          </div>
+
+          <div class="form-row"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Contact -->

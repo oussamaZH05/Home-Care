@@ -1,0 +1,127 @@
+<div *ngIf="show == true"><app-titles title="Nurse's"></app-titles></div>
+
+<!-- Start Team
+		============================================= -->
+<div class="team-area tm-1 de-pb mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="site-title text-center">
+          <h5>_Nurses Team_</h5>
+          <h2>Our experienced Nurses</h2>
+          <p class="mb-0 mt-20">
+            Find a caregiver and get the best care you or your loved one
+            deserves
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        class="team-wrapper grid-4 justify-content-center"
+        *ngIf="show == false"
+      >
+        <div class="team-box" *ngFor="let nurse of nurses | slice : 0 : 4">
+          <div class="team-pic">
+            <img src="{{ nurse.avatar }}" alt="thumb" class="img-fluid" />
+            <div class="team-overlay">
+              <div class="team-bio">
+                <a href="doctor-profile.html"
+                  ><h5>
+                    {{ nurse.lastName | uppercase }} {{ nurse.firstName }}
+                  </h5></a
+                >
+                <span>address: {{ nurse.address }}</span>
+              </div>
+              <div>
+                <ul class="team-scl-list">
+                  <li>
+                    <a (click)="goToDisplay(nurse._id)"
+                      ><i class="fa fa-user" aria-hidden="true"></i>
+                      <h6>Display</h6></a
+                    >
+                  </li>
+                  <li>
+                    <a (click)="sendRequest(nurse._id)"
+                      ><i class="fa fa-paper-plane"></i>
+                      <h6>Contact</h6></a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="show == true">
+        <div class="team-wrapper grid-4 justify-content-center">
+          <div class="team-box" *ngFor="let nurse of pageOfItems">
+            <div class="team-pic">
+              <img src="{{ nurse.avatar }}" alt="thumb" />
+              <div class="team-overlay">
+                <div class="team-bio">
+                  <a href="doctor-profile.html"
+                    ><h5>
+                      {{ nurse.lastName | uppercase }} {{ nurse.firstName }}
+                    </h5></a
+                  >
+                  <span>address: {{ nurse.address }}</span>
+                </div>
+                <div class="team-social">
+                  <ul class="team-scl-list">
+                    <li>
+                      <a (click)="goToDisplay(nurse._id)"
+                        ><i class="fa fa-user" aria-hidden="true"></i>
+                        <h6>Display</h6></a
+                      >
+                    </li>
+                    <li>
+                      <a (click)="sendRequest(nurse._id)"
+                        ><i class="fa fa-paper-plane"></i>
+                        <h6>Contact</h6></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="card-footer pb-0 pt-3">
+          <jw-pagination
+            [items]="nurses"
+            [pageSize]="1"
+            (changePage)="onChangePage($event)"
+          ></jw-pagination>
+        </span>
+      </div>
+    </div>
+    <div class="row mt-5 justify-content-center">
+      <div class="hro-btn" *ngIf="show == false">
+        <a routerLink="allNurses" class="theme-btn"
+          >Show All <i class="ti ti-arrow-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Team -->
+<!-- Start Post Editor
+		============================================= -->
+<div
+  class="app-area de-padding"
+  style="background-image: url(assets/img/header/bg33.jpg)"
+>
+  <div class="container">
+    <div class="app-wrapper text-center">
+      <h6>Anything missing there? Don't worry</h6>
+      <h2>Make Your Job Offer</h2>
+      <div class="hro-btn">
+        <a routerLink="" class="theme-btn"
+          >Post your Job <i class="ti ti-arrow-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Appointment -->

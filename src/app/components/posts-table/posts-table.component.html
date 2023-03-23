@@ -1,0 +1,89 @@
+<app-titles title="Posts Table"></app-titles>
+<!-- Start work
+		============================================= -->
+<div id="portfolio" class="portfolio-area de-padding ptt-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="site-title text-center">
+          <h5>Posts Table_</h5>
+          <h2 class="mb-0">Check All Clients Posts</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="pf-item justify-content-center">
+        <div class="d-profile-inf-box mt-5">
+          <h4 class="d-pf">Posts Table:</h4>
+
+          <table class="table text-center" *ngIf="postsTab?.length">
+            <thead class="thead-light">
+              <tr>
+                <th>N°</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let post of pageOfItems; let i = index">
+                <td>{{ i }}</td>
+                <td>{{ post.date | date : "dd/MM/yyyy" }}</td>
+                <td>{{ post.title }}</td>
+                <td class="text-left">{{ post.description }}</td>
+                <td>{{ post.status }}</td>
+
+                <td>
+                  <ul class="wrapper">
+                    <li
+                      class="icon facebook"
+                      *ngIf="post.status == 'Not Confirmed'"
+                    >
+                      <span class="tooltip">Confirm</span>
+                      <span>
+                        <i
+                          class="far fa-eye fa"
+                          (click)="confirmPost(post._id)"
+                        ></i
+                      ></span>
+                    </li>
+                    <li class="icon editOuss">
+                      <span class="tooltip">Edit</span>
+                      <span
+                        ><i
+                          class="fas fa-edit fa"
+                          (click)="goToPostEdit(post._id)"
+                        ></i
+                      ></span>
+                    </li>
+                    <li class="icon DeleteOuss">
+                      <span class="tooltip">Delete</span>
+                      <span
+                        ><i
+                          class="far fa-trash-alt fa"
+                          (click)="deletePost(post._id)"
+                        ></i
+                      ></span>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-center" *ngIf="!postsTab?.length">
+            <h3>No Data Found</h3>
+          </div>
+        </div>
+        <span class="card-footer pb-0 pt-3">
+          <jw-pagination
+            [items]="postsTab"
+            [pageSize]="3"
+            (changePage)="onChangePage($event)"
+          ></jw-pagination>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

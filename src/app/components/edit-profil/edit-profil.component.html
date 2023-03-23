@@ -1,0 +1,86 @@
+<app-titles title="Edit Profile"></app-titles>
+
+<!-- Start Contact 
+		============================================= -->
+<div class="c-us-area de-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="site-title text-center">
+          <h2>Edit Profile</h2>
+          <p class="mt-10">You Can Edit Your Profile From Here:</p>
+        </div>
+      </div>
+    </div>
+    <div class="c-us-wpr">
+      <div class="row">
+        <div class="col-3"></div>
+
+        <form
+          #profileEditForm="ngForm"
+          (ngSubmit)="profileEdit()"
+          class="col-6"
+        >
+          <div class="col-md-6 mb-5">
+            <div class="form-group">
+              <label for="phone">New phone</label>
+              <input
+                type="text"
+                class="form-control"
+                name="phone"
+                id="phone"
+                #phone="ngModel"
+                required
+                pattern="([0-9]{8}$)"
+                [(ngModel)]="user.phone"
+                [ngModelOptions]="{ standalone: true }"
+                placeholder="New phone"
+              />
+            </div>
+            <div
+              *ngIf="!phone.valid && (phone.dirty || phone.touched)"
+              class="error"
+            >
+              <div *ngIf="phone.errors.required">phone is required</div>
+
+              <div *ngIf="phone.errors.pattern">
+                phone number must be 8 digits
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-5">
+            <div class="form-group">
+              <label for="address">New address</label>
+              <select
+                class="form-control"
+                id="address"
+                #address="ngModel"
+                required
+                [(ngModel)]="user.address"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <option value="">Choose City</option>
+                <option *ngFor="let city of City" [ngValue]="city">
+                  {{ city }}
+                </option>
+              </select>
+            </div>
+            <div
+              *ngIf="!address.valid && (address.dirty || address.touched)"
+              class="error"
+            >
+              <div *ngIf="address.errors.required">address is required</div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button class="bt rounded-pill" [disabled]="!profileEditForm.valid">
+              Confirm
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Contact -->

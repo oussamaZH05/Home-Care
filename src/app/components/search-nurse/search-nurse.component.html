@@ -1,0 +1,155 @@
+<app-titles title="Search"></app-titles>
+
+<!-- Start Search
+		============================================= -->
+<div
+  class="tba-area de-padding"
+  style="background-image: url(assets/img/header/bg_copy.jpg)"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="site-title wh text-center">
+          <h2>Search a nurse from here...</h2>
+          <form class="contact-form mt-5" [formGroup]="searchForm">
+            <div class="row">
+              <div class="col-12 text-center mb-5">
+                <div class="form-group">
+                  <p for="address">Address :</p>
+                  <select
+                    class="form-control-white"
+                    placeholder="Choose City"
+                    formControlName="address"
+                  >
+                    <option value="">Choose City</option>
+                    <option *ngFor="let city of City" [ngValue]="city">
+                      {{ city }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 form-group text-center">
+                <p>Experience Between :</p>
+              </div>
+              <div class="col-md-6 mb-5">
+                <div class="form-group" style="margin-left: 110px">
+                  <input
+                    type="number"
+                    class="form-control-white"
+                    name="experienceMin"
+                    formControlName="experienceMin"
+                    placeholder="Experience Min"
+                  />
+                </div>
+                <div
+                  style="color: rgb(255 174 174)"
+                  *ngIf="
+                    searchForm.controls['experienceMin'].invalid &&
+                    (searchForm.controls['experienceMin'].touched ||
+                      searchForm.controls['experienceMin'].dirty)
+                  "
+                >
+                  <div *ngIf="searchForm.controls['experienceMin'].errors.min">
+                    Experience min is 0
+                  </div>
+                  <div *ngIf="searchForm.controls['experienceMin'].errors.max">
+                    Experience max is 25 years
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-5">
+                <div class="form-group" style="margin-right: 110px">
+                  <input
+                    type="number"
+                    class="form-control-white"
+                    name="experienceMax"
+                    formControlName="experienceMax"
+                    placeholder="Experience Max"
+                  />
+                </div>
+                <div
+                  style="color: rgb(255 174 174)"
+                  *ngIf="
+                    searchForm.controls['experienceMax'].invalid &&
+                    (searchForm.controls['experienceMax'].touched ||
+                      searchForm.controls['experienceMax'].dirty)
+                  "
+                >
+                  <div *ngIf="searchForm.controls['experienceMax'].errors.min">
+                    Experience min is 0
+                  </div>
+                  <div *ngIf="searchForm.controls['experienceMax'].errors.max">
+                    Experience max is 25 years
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pf-item video photography development">
+              <div class="pt-box">
+                <div class="pt-pic">
+                  <div class="pt-overlay-ouss">
+                    <button
+                      [disabled]="searchForm.invalid"
+                      (click)="searchNurse()"
+                    >
+                      <i class="ti ti-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Search -->
+<div class="container">
+  <div class="row">
+    <div class="col justify-content-center">
+      <!-- result search section -->
+      <div class="text-center" *ngIf="searchResults?.length == 0">
+        <h3>No data matching your search</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div
+      class="col-4 justify-content-center"
+      *ngFor="let result of searchResults"
+    >
+      <div class="pt-box" style="min-width: fit-content; height: 500px">
+        <div class="pt-pic">
+          <img
+            [src]="result.avatar"
+            style="height: 350px; width: 400px"
+            class="course-pic"
+            alt="thumb"
+          />
+          <div class="pt-overlay">
+            <a
+              class="item popup-link"
+              (click)="goToSearchedProfile(result._id)"
+            >
+              <i class="ti ti-search"></i>
+            </a>
+          </div>
+        </div>
+        <div class="pt-info">
+          <h5>
+            {{ result.lastName | uppercase }}
+            {{ result.firstName }}
+          </h5>
+          <a (click)="goToSearchedProfile(result._id)"
+            ><i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

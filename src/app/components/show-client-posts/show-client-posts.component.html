@@ -1,0 +1,155 @@
+<div class="fd-area de-pt" *ngIf="show == true">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="site-title text-center">
+          <h5>Recent Jobs Offers</h5>
+          <h2>What Our Clients Are Looking For?</h2>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleIndicators"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" style="margin-top: 100px">
+        <app-caroussel [clientInput]="posts"></app-caroussel>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only" style="color: red">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- End Recent Posts -->
+<div class="row mt-5 justify-content-center mb-3" *ngIf="show == true">
+  <div class="hro-btn">
+    <a routerLink="jobsOffers" class="theme-btn"
+      >Show All Posts <i class="ti ti-arrow-right"></i
+    ></a>
+  </div>
+</div>
+<!-- Start ALL posts
+		============================================= -->
+<div class="dep-sv de-padding" *ngIf="show == false">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <div class="site-title text-center">
+          <h5>_Publications Space_</h5>
+          <h2>Rafrafi House Job Offers</h2>
+          <p class="mt-10">
+            We have been providing House care professional services since 2023.
+            With success we care for the patients with utmost care. This is very
+            important to us.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="dep-sv-wrapper grid-3">
+      <div class="de-sv-box" *ngFor="let post of pageOfItems">
+        <div class="de-sv-icon text-center">
+          <i class="fa fa-heartbeat fa-5x" aria-hidden="true"></i>
+        </div>
+        <div style="text-align: center">
+          <h5 class="text-center">{{ post.title }}</h5>
+          <p>
+            {{ post.description }}
+          </p>
+          <div class="b-1-meta">
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-user"></i>{{ post.author[0].firstName }}</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fas fa-clock"></i
+                  >{{ post.date | date : "dd/MM/yyyy" }}</a
+                >
+              </li>
+              <li>
+                <a href="single.html"
+                  ><i class="fa fa-map-marker" aria-hidden="true"></i
+                  >{{ post.author[0].address }}</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="but mt-3" (click)="goToDisplayPostInfo(post._id)">
+            View Details
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="card-footer pb-0 pt-3">
+      <jw-pagination
+        [items]="posts"
+        [pageSize]="6"
+        (changePage)="onChangePage($event)"
+      ></jw-pagination>
+    </span>
+  </div>
+</div>
+<!-- End All Posts -->
+
+<!-- <div class="fd-box">
+  <div class="fd-pic">
+    <div class="fd-pc">
+      <img src="assets/img/review/b.jpg" alt="thumb" />
+    </div>
+  </div>
+  <div class="fd-info">
+    <h5>{{ post1.title }}</h5>
+    <p class="mb-0">
+      {{ post1.description }}
+    </p>
+  </div>
+  <div class="b-1-meta">
+    <ul>
+      <li>
+        <a href="#"><i class="fas fa-user"></i> </a>
+      </li>
+      <li>
+        <a href="#"
+          ><i class="fas fa-clock"></i>
+          {{ post1.date | date : "dd/MM/yyyy" }}
+        </a>
+      </li>
+      <li>
+        <a href="single.html"
+          ><i class="fa fa-map-marker" aria-hidden="true"></i
+        ></a>
+      </li>
+    </ul>
+  </div>
+</div> -->

@@ -1,0 +1,160 @@
+<app-titles title="Profile"></app-titles>
+<!-- Start Blog-Content
+		============================================= -->
+<div class="d-profile de-padding clearfix">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4">
+        <div class="d-profile-sidebar">
+          <div class="d-profile-sidebar-single">
+            <div class="team-box">
+              <div class="team-pic">
+                <img
+                  [src]="nurse.avatar"
+                  alt="thumb"
+                  class="img-fluid"
+                  style="width: 400px"
+                />
+                <div class="team-overlay">
+                  <div class="team-bio">
+                    <h5>
+                      {{ nurse.lastName | uppercase }} {{ nurse.firstName }}
+                    </h5>
+                    <span>address: {{ nurse.address }}</span>
+                  </div>
+                  <div class="team-social" *ngIf="RequestShow == true">
+                    <ul class="team-scl-list">
+                      <li>
+                        <a (click)="sendRequest(nurse._id)"
+                          ><i class="fa fa-paper-plane"></i>
+                          <h6>Send Request</h6></a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8">
+        <div class="d-profile-info">
+          <div class="d-profile-inf-box">
+            <h4 class="d-pf">Profile</h4>
+            <ul class="d-profile-day">
+              <li>
+                <span>First Name </span><span>{{ nurse.firstName }}</span>
+              </li>
+              <li>
+                <span>Last Name </span
+                ><span>{{ nurse.lastName | uppercase }}</span>
+              </li>
+
+              <li *ngIf="experienceShow == true">
+                <span>Experience </span
+                ><span>{{ nurse.experience }} Year’s </span>
+              </li>
+
+              <li>
+                <span>Phone No </span><span>+216-{{ nurse.phone }}</span>
+              </li>
+              <li>
+                <span>Email </span><span>{{ nurse.email }}</span>
+              </li>
+              <li>
+                <span>Address </span><span>{{ nurse.address }}</span>
+              </li>
+            </ul>
+          </div>
+          <div class="d-profile-inf-box" *ngIf="RequestShow == false">
+            <h4 class="d-pf">Edit Profile</h4>
+            <ul class="wrapper">
+              <li class="icon editOuss">
+                <span class="tooltip">Edit Profile</span>
+                <span
+                  ><i class="fas fa-edit fa-2x" (click)="goToProfileEdit()"></i
+                ></span>
+              </li>
+            </ul>
+          </div>
+          <div class="d-profile-inf-box" *ngIf="RequestShow == true">
+            <h4 class="d-pf">Get In Touch</h4>
+            <div class="d-profile-sidebar-single">
+              <div class="d-profile-sidebar-box">
+                <ul class="d-profile-list">
+                  <li>Phone:+ (216) {{ nurse.phone }}</li>
+                  <li>Office:+ (216) {{ nurse.phone }}</li>
+
+                  <li>E-mail: {{ nurse.email }}</li>
+                </ul>
+                <button (click)="displayCV()">cvvvvvvvvvvvvvv</button>
+                <div class="text-center">
+                  <a (click)="sendRequest(nurse._id)" class="send"
+                    ><i class="fa fa-paper-plane"></i>
+                    <h6 class="send">Send Contact Request</h6></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-profile-inf-box" *ngIf="postsShow == true">
+            <h4 class="d-pf">Posts:</h4>
+
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th>Date</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2015 - 2020</td>
+                  <td>MBBS, M.D</td>
+                  <td>Senior Prof.</td>
+                  <td>Medihouse Medical Clinic</td>
+                </tr>
+                <tr>
+                  <td>2015 - 2020</td>
+                  <td>MBBS, M.D</td>
+                  <td>Senior Prof.</td>
+                  <td>Medihouse Medical Clinic</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End  Blog-Content -->
+
+<!-- <div class="mb-5 text-center" *ngIf="show == 'Nurse'">
+  <div class="text-center">
+    <button type="button" (click)="cvPicker.click()" class="bt rounded-pill">
+      Upload your CV
+    </button>
+  </div>
+  <div class="text-center mt-3">
+    <iframe
+      [src]="CVPreview | safe"
+      *ngIf="CVPreview"
+      class="pt-3 pb-3"
+      width="200px"
+      height="200px"
+    ></iframe>
+  </div>
+  <div class="form-group">
+    <input
+      style="visibility: hidden"
+      type="file"
+      class="form-control"
+      #cvPicker
+      (change)="onCVSelected($event)"
+    />
+  </div>
+</div> -->

@@ -1,0 +1,197 @@
+<!-- first elt of the table -->
+<div
+  class="carousel-item active"
+  *ngFor="let c of clientInput | slice : 0 : 1"
+  style="padding-top: 80px"
+>
+  <div class="fd-box">
+    <div class="fd-pic">
+      <div class="fd-pc">
+        <img src="assets/img/review/b.jpg" alt="thumb" />
+      </div>
+    </div>
+    <div class="fd-info">
+      <h5>{{ c.title }}</h5>
+      <p class="mb-0">
+        {{ c.description }}
+      </p>
+    </div>
+    <div class="b-1-meta">
+      <ul>
+        <li>
+          <a href="#"
+            ><i class="fas fa-user"></i>{{ c.author[0].firstName }}
+          </a>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="fas fa-clock"></i> {{ c.date | date : "dd/MM/yyyy" }}</a
+          >
+        </li>
+        <li>
+          <a href="single.html"
+            ><i class="fa fa-map-marker" aria-hidden="true"></i
+            >{{ c.author[0]?.address }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- <h1>sdfvvdv</h1> -->
+</div>
+
+<!-- Rest of the table -->
+<div
+  class="carousel-item"
+  *ngFor="let c of clientInput | slice : 1"
+  style="padding-top: 80px"
+>
+  <div class="fd-box">
+    <div class="fd-pic">
+      <div class="fd-pc">
+        <img src="assets/img/review/b.jpg" alt="thumb" />
+      </div>
+    </div>
+    <div class="fd-info">
+      <h5>{{ c?.title }}</h5>
+      <p class="mb-0">
+        {{ c?.description }}
+      </p>
+    </div>
+    <div class="b-1-meta">
+      <ul>
+        <li>
+          <a href="#"
+            ><i class="fas fa-user"></i> {{ c.author[0].firstName }}</a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><i class="fas fa-clock"></i> {{ c?.date | date : "dd/MM/yyyy" }}</a
+          >
+        </li>
+        <li>
+          <a href="single.html"
+            ><i class="fa fa-map-marker" aria-hidden="true"></i
+            >{{ c.author[0].address }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- requests table -->
+<!-- 
+<app-titles title="Requests Table"></app-titles>
+<main>
+  <h1 class="white text-center">Requests Table</h1>
+  <input id="radio1" type="radio" name="css-tabs" checked />
+  <input id="radio2" type="radio" name="css-tabs" />
+  <input id="radio3" type="radio" name="css-tabs" />
+  <input id="radio4" type="radio" name="css-tabs" />
+  <div id="tabs">
+    <label id="tab1" for="radio1" class="white text-center">Request sent</label>
+    <label id="tab2" for="radio2" class="white text-center"
+      >Jobs accepted</label
+    >
+  </div>
+  <div id="content">
+    <section id="content1">
+      <h3 class="white text-center">
+        Requests Sent from clients to nurses Table:
+      </h3>
+
+      <table
+        class="table table-bordered table-hover text-center"
+        style="table-layout: auto; width: 100%"
+      >
+        <thead class="thead-light">
+          <tr>
+            <th>N°</th>
+            <th>Client First Name</th>
+            <th>Client Last Name</th>
+            <th>Client Email</th>
+            <th>Action</th>
+            <th>Nurse First Name</th>
+            <th>Nurse Last Name</th>
+            <th>Nurse Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of pageOfItems; let i = index">
+            <td class="black">{{ i }}</td>
+            <td class="table-success">{{ request.clients[0]?.firstName }}</td>
+            <td class="table-success">{{ request.clients[0]?.lastName }}</td>
+            <td class="table-success">{{ request.clients[0]?.email }}</td>
+            <td class="table-info"><i class="fa fa-arrow-right"></i></td>
+            <td class="table-danger">{{ request.nurses[0]?.firstName }}</td>
+            <td class="table-danger">{{ request.nurses[0]?.lastName }}</td>
+            <td class="table-danger">{{ request.nurses[0]?.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <span class="card-footer pb-0 pt-3 ouss">
+        <jw-pagination
+          [items]="sentRequestsTab"
+          [pageSize]="2"
+          (changePage)="onChangePage($event)"
+        ></jw-pagination>
+      </span>
+    </section>
+
+    <section id="content2">
+      <h3 class="white text-center">Accepted Job offers details:</h3>
+      <table
+        class="table table-bordered table-hover text-center"
+        style="table-layout: auto; width: 100%"
+      >
+        <thead class="thead-light">
+          <tr>
+            <th>N°</th>
+            <th>Job Info</th>
+            <th>Client First Name</th>
+            <th>Client Last Name</th>
+            <th>Client Email</th>
+            <th></th>
+            <th>Nurse First Name</th>
+            <th>Nurse Last Name</th>
+            <th>Nurse Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let job of pageOfItemsJobs; let i = index">
+            <td class="black">{{ i }}</td>
+
+            <td class="black">
+              <ul class="wrapper">
+                <li class="icon facebook">
+                  <span class="tooltip">Job Info</span>
+                  <span>
+                    <i class="far fa-eye fa" (click)="jobInfo(job)"></i
+                  ></span>
+                </li>
+              </ul>
+            </td>
+
+            <td class="table-danger">{{ job.clients[0]?.firstName }}</td>
+            <td class="table-danger">{{ job.clients[0]?.lastName }}</td>
+            <td class="table-danger">{{ job.clients[0]?.email }}</td>
+            <td class="table-info"><i class="fa fa-arrow-left"></i></td>
+            <td class="table-success">{{ job.nurses[0]?.firstName }}</td>
+            <td class="table-success">{{ job.nurses[0]?.lastName }}</td>
+            <td class="table-success">{{ job.nurses[0]?.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <span class="card-footer pb-0 pt-3">
+        <jw-pagination
+          [items]="acceptedJobsTab"
+          [pageSize]="2"
+          (changePage)="onChangePageJobs($event)"
+        ></jw-pagination>
+      </span>
+    </section>
+  </div>
+</main> -->

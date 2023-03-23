@@ -1,0 +1,411 @@
+<!-- Start Signup
+		============================================= -->
+<app-titles title="Signup"></app-titles>
+<!-- End Signup -->
+
+<!-- Start Signup
+		============================================= -->
+<div
+  class="c-area de-padding"
+  style="background-image: url(assets/img/header/bg.jpg)"
+>
+  <div class="container">
+    <div class="p-wrapper">
+      <div class="row">
+        <div class="col-xl-8 offset-xl-2">
+          <div class="contact-inputs">
+            <h2>Signup</h2>
+
+            <!-- form client && admin -->
+
+            <form class="contact-form" [formGroup]="signupForm">
+              <div class="row">
+                <div class="col-md-6 mb-5">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="name"
+                      formControlName="firstName"
+                      placeholder="First Name"
+                    />
+                  </div>
+
+                  <div
+                    style="color: rgb(255 174 174)"
+                    *ngIf="
+                      signupForm.controls['firstName'].invalid &&
+                      (signupForm.controls['firstName'].touched ||
+                        signupForm.controls['firstName'].dirty)
+                    "
+                  >
+                    <div
+                      *ngIf="signupForm.controls['firstName'].errors.required"
+                    >
+                      First Name is required
+                    </div>
+                    <div
+                      *ngIf="signupForm.controls['firstName'].errors.minlength"
+                    >
+                      First Name must have at least 3 chars
+                    </div>
+                    <div
+                      *ngIf="signupForm.controls['firstName'].errors.maxlength"
+                    >
+                      First Name must have at most 20 chars
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-5">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="name"
+                      formControlName="lastName"
+                      placeholder="Last Name"
+                    />
+                  </div>
+                  <div
+                    style="color: rgb(255 174 174)"
+                    *ngIf="
+                      signupForm.controls['lastName'].invalid &&
+                      (signupForm.controls['lastName'].touched ||
+                        signupForm.controls['lastName'].dirty)
+                    "
+                  >
+                    <div
+                      *ngIf="signupForm.controls['lastName'].errors.required"
+                    >
+                      Last Name is required
+                    </div>
+                    <div
+                      *ngIf="signupForm.controls['lastName'].errors.minlength"
+                    >
+                      Last Name must have at least 3 chars
+                    </div>
+                    <div
+                      *ngIf="signupForm.controls['lastName'].errors.maxlength"
+                    >
+                      Last Name must have at most 20 chars
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-5">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="email"
+                      formControlName="email"
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div
+                    style="color: rgb(255 174 174)"
+                    *ngIf="
+                      signupForm.controls['email'].invalid &&
+                      (signupForm.controls['email'].touched ||
+                        signupForm.controls['email'].dirty)
+                    "
+                  >
+                    <div *ngIf="signupForm.controls['email'].errors.required">
+                      Email is required
+                    </div>
+                    <div *ngIf="signupForm.controls['email'].errors.email">
+                      Email format is required
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-5">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="phone"
+                      formControlName="phone"
+                      placeholder="Your phone"
+                    />
+                  </div>
+                  <div
+                    style="color: rgb(255 174 174)"
+                    *ngIf="
+                      signupForm.controls['phone'].invalid &&
+                      (signupForm.controls['phone'].touched ||
+                        signupForm.controls['phone'].dirty)
+                    "
+                  >
+                    <div *ngIf="signupForm.controls['phone'].errors.required">
+                      phone is required
+                    </div>
+                    <div *ngIf="signupForm.controls['phone'].errors.pattern">
+                      phone format is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-5">
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      formControlName="password"
+                      placeholder="Your password"
+                    />
+                  </div>
+                  <div
+                    style="color: rgb(255 174 174)"
+                    *ngIf="
+                      signupForm.controls['password'].invalid &&
+                      (signupForm.controls['password'].touched ||
+                        signupForm.controls['password'].dirty)
+                    "
+                  >
+                    <div
+                      *ngIf="signupForm.controls['password'].errors.required"
+                    >
+                      Password is required
+                    </div>
+                    <div
+                      *ngIf="signupForm.controls['password'].errors.minlength"
+                    >
+                      Password must have at least 6 chars
+                    </div>
+                    <div
+                      *ngIf="signupForm.controls['password'].errors.maxlength"
+                    >
+                      Password must have at most 12 chars
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-5">
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="confirmPassword"
+                      formControlName="confirmPassword"
+                      placeholder="Confirm your password"
+                    />
+                  </div>
+                  <div
+                    style="color: rgb(255 174 174)"
+                    *ngIf="
+                      signupForm.controls['confirmPassword'].invalid &&
+                      (signupForm.controls['confirmPassword'].touched ||
+                        signupForm.controls['confirmPassword'].dirty)
+                    "
+                  >
+                    <div
+                      *ngIf="
+                        signupForm.controls['confirmPassword'].errors
+                          .confirmError
+                      "
+                    >
+                      Confirm Password does not match Password
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-5" *ngIf="show == 'Nurse'">
+                  <div class="form-group">
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="experience"
+                      formControlName="experience"
+                      placeholder="Experience"
+                    />
+                  </div>
+                  <div
+                    style="color: rgb(255 174 174)"
+                    *ngIf="
+                      signupForm.controls['experience'].invalid &&
+                      (signupForm.controls['experience'].touched ||
+                        signupForm.controls['experience'].dirty)
+                    "
+                  >
+                    <div
+                      *ngIf="signupForm.controls['experience'].errors.required"
+                    >
+                      Experience is required
+                    </div>
+                    <div *ngIf="signupForm.controls['experience'].errors.min">
+                      Experience must be between 0 and 25 years
+                    </div>
+                    <div *ngIf="signupForm.controls['experience'].errors.max">
+                      Experience must be between 0 and 25 years
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-5">
+                  <div class="form-group">
+                    <select class="form-control" formControlName="address">
+                      <option value="">Choose City</option>
+                      <option *ngFor="let city of City" [ngValue]="city">
+                        {{ city }}
+                      </option>
+                    </select>
+                  </div>
+                  <div
+                    style="color: rgb(255 174 174)"
+                    *ngIf="
+                      signupForm.controls['address'].invalid &&
+                      (signupForm.controls['address'].touched ||
+                        signupForm.controls['address'].dirty)
+                    "
+                  >
+                    <div *ngIf="signupForm.controls['address'].errors.required">
+                      Address is required
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-5" style="text-align: left">
+                  <span style="color: white">Gender :</span>
+                  <div style="text-align: left; margin-left: 70px">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="exampleRadios1"
+                        value="0"
+                        formControlName="gender"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="exampleRadios1"
+                        style="color: white"
+                      >
+                        Man
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="exampleRadios2"
+                        value="1"
+                        formControlName="gender"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="exampleRadios2"
+                        style="color: white"
+                      >
+                        Woman
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="exampleRadios3"
+                        value="-1"
+                        formControlName="gender"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="exampleRadios3"
+                        style="color: white"
+                      >
+                        Other
+                      </label>
+                    </div>
+                  </div>
+                  <div
+                    style="color: rgb(255 174 174)"
+                    *ngIf="
+                      signupForm.controls['gender'].invalid &&
+                      (signupForm.controls['gender'].touched ||
+                        signupForm.controls['gender'].dirty)
+                    "
+                  >
+                    <div *ngIf="signupForm.controls['gender'].errors.required">
+                      Gender is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 mb-5 justify-content-center">
+                  <div class="mb-5 text-center">
+                    <div class="text-center">
+                      <button
+                        type="button"
+                        (click)="filePicker.click()"
+                        class="bt rounded-pill"
+                      >
+                        Select your avatar
+                      </button>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        style="visibility: hidden"
+                        type="file"
+                        class="form-control"
+                        #filePicker
+                        (change)="onImageSelected($event)"
+                      />
+                    </div>
+                    <div class="text-center">
+                      <img
+                        *ngIf="imagePreview"
+                        [src]="imagePreview"
+                        class="circular--square"
+                      />
+                    </div>
+                  </div>
+                  <!-- cv -->
+                  <div class="mb-5 text-center" *ngIf="show == 'Nurse'">
+                    <div class="text-center">
+                      <button
+                        type="button"
+                        (click)="cvPicker.click()"
+                        class="bt rounded-pill"
+                      >
+                        Upload your CV
+                      </button>
+                    </div>
+                    <div class="text-center mt-3">
+                      <iframe
+                        [src]="CVPreview | safe"
+                        *ngIf="CVPreview"
+                        class="pt-3 pb-3"
+                        width="200px"
+                        height="200px"
+                      ></iframe>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        style="visibility: hidden"
+                        type="file"
+                        class="form-control"
+                        #cvPicker
+                        (change)="onCVSelected($event)"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="contact-sub-btn">
+                    <button
+                      type=""
+                      (click)="signup()"
+                      [disabled]="signupForm.invalid"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Signup -->

@@ -1,0 +1,185 @@
+<!-- Start header
+    ============================================= -->
+<header class="header header-2 h-1">
+  <div class="main-navigation">
+    <div class="header-top-1">
+      <div class="container-fluid">
+        <!-- <div class="hdr-1-wrap">
+          <div class="hdr-1-left">
+            <span
+              ><i class="fas fa-map-marker-alt"></i>105 Marchun Road, NewYork,
+              USA.</span
+            >
+            <span><i class="fas fa-phone"></i>+5 (87) 86953-12</span>
+          </div>
+          <div class="hdr-1-right">
+            <ul>
+              <li><i class="fas fa-clock"></i>Mon-Sat (8am - 6pm)</li>
+              <li><i class="fas fa-envelope"></i>example@gmail.com</li>
+              <li>
+                <div class="potaka">
+                  <div class="dropdown">
+                    <button
+                      class="cus-btn dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <img src="assets/img/flag/en.png" alt="thumb" /> ENG
+                    </button>
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a class="dropdown-item" href="#"
+                        ><img src="assets/img/flag/jp.png" alt="thumb" /> JP</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div
+      class="navbar navbar-expand-lg bsnav bsnav-sticky bsnav-sticky-slide bsnav-scrollspy"
+    >
+      <div class="container-fluid">
+        <a
+          class="navbar-brand"
+          href="https://themekar.com/templatebucket/medihouse/index.html"
+        >
+          <img
+            src="assets/img/logo/logo-1.png"
+            class="logo-display"
+            alt="thumb"
+          />
+          <img
+            src="assets/img/logo/logo-1.png"
+            class="logo-scrolled"
+            alt="thumb"
+          />
+        </a>
+        <button class="navbar-toggler toggler-spring">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-sm-center">
+          <ul class="navbar-nav navbar-mobile">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="">Home</a>
+            </li>
+
+            <li class="nav-item" *ngIf="role != 'none'">
+              <a class="nav-link" routerLink="userProfile">profile</a>
+            </li>
+
+            <li class="nav-item" *ngIf="role == 'client'">
+              <a class="nav-link" routerLink="addPost">add Post</a>
+            </li>
+            <li class="nav-item" *ngIf="role == 'client'">
+              <a class="nav-link" routerLink="allNurses">All Nurses</a>
+            </li>
+            <li class="nav-item" *ngIf="role == 'nurse'">
+              <a class="nav-link" routerLink="jobsOffers">Job Offers</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" *ngIf="role == 'client'"
+                >Dashboard Client <i class="caret ti-plus"></i
+              ></a>
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="clientPosts">My Posts</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="clientRequests"
+                    >My sent Requests
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item" *ngIf="role == 'admin'">
+              <a class="nav-link" routerLink="adminDashboard"
+                >Dashboard Admin</a
+              >
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" *ngIf="role == 'nurse'"
+                >Dashboard Nurse <i class="caret ti-plus"></i
+              ></a>
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="sentRequests"
+                    >Requests Sent</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="receivedRequests"
+                    >Requests Received</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item" *ngIf="role != 'none'">
+              <a class="nav-link" routerLink="search"
+                >Search <i class="ti ti-search"></i
+              ></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" *ngIf="role == 'none'"
+                >Signup <i class="caret ti-plus"></i
+              ></a>
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="signupNurse">Signup Nurse</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="signupClient"
+                    >Signup client</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="signupAdmin">Signup Admin</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item" *ngIf="role == 'none'">
+              <a class="nav-link" routerLink="login">Login</a>
+            </li>
+            <li class="nav-item" *ngIf="role != 'none'">
+              <a class="nav-link" (click)="logOut()">Logout</a>
+            </li>
+          </ul>
+
+          <div class="header-serarch-btn un-srs">
+            <div class="h-item-1">
+              <!-- <input type="checkbox" class="frm" id="frm" /> -->
+
+              <!-- <form class="header-form">
+                <input type="text" placeholder="search ..." />
+                <button type="button" class="srs-btn">
+                  <i class="ti ti-search"></i>
+                </button>
+              </form> -->
+            </div>
+            <div class="h-item-2">
+              <i class="fas fa-shopping-cart"></i>
+              <a href="contact.html"
+                >appointment<i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bsnav-mobile">
+      <div class="bsnav-mobile-overlay"></div>
+      <div class="navbar"></div>
+    </div>
+  </div>
+</header>
+<!-- End header -->
